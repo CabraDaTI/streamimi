@@ -23,20 +23,31 @@ repositories {
 }
 
 dependencies {
+
+    // Spring Utils
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    // TODO: testar modulith posteriormente
+    // Spring Modulith
+    //implementation 'org.springframework.modulith:spring-modulith-starter-core'
+    //runtimeOnly 'org.springframework.modulith:spring-modulith-actuator'
+    //runtimeOnly 'org.springframework.modulith:spring-modulith-observability'
+    //testImplementation 'org.springframework.modulith:spring-modulith-starter-test'
+
+    // Spring Web
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.modulith:spring-modulith-starter-core'
+
+    // Lombok
     compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
-    runtimeOnly 'org.springframework.modulith:spring-modulith-actuator'
-    runtimeOnly 'org.springframework.modulith:spring-modulith-observability'
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
+    //developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
+
+    // Test Libs
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.boot:spring-boot-testcontainers'
-    testImplementation 'org.springframework.modulith:spring-modulith-starter-test'
     testImplementation 'org.testcontainers:junit-jupiter'
 }
 
