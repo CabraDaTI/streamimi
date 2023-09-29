@@ -37,7 +37,8 @@ out/
 .vscode/
 
 ### LocalStack ###
-localstack/tmp
-localstack/logs
-localstack/lib
-localstack/cache
+local/localstack/tmp
+local/localstack/logs
+local/localstack/lib
+local/localstack/cache
+local/localstack/state
