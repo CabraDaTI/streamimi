@@ -1,2 +1,3 @@
 # streamimi
-streamming app
+
+Aplicativo básico de streamming de vídeo
