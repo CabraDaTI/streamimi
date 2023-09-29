@@ -8,8 +8,28 @@ services:
       - "127.0.0.1:4566:4566"            # LocalStack Gateway
       - "127.0.0.1:4510-4559:4510-4559"  # external services port range
     environment:
-      - DEBUG=${DEBUG-}
+      - SERVICES=dynamodb
+      - DEBUG=1
       - DOCKER_HOST=unix:///var/run/docker.sock
     volumes:
-      - "${LOCALSTACK_VOLUME_DIR:-./localstack}:/var/lib/localstack"
+      - "${LOCALSTACK_VOLUME_DIR:-./local/localstack}:/var/lib/localstack"
+      - "${LOCALSTACK_VOLUME_DIR:-./local/localstack/init}:/etc/localstack/init"
       - "/var/run/docker.sock:/var/run/docker.sock"
+    networks:
+      - local
+
+  dynamodb-admin:
+    depends_on: [localstack]
+    container_name: "dynamodb-admin"
+    ports:
+      - "8001:8001"
+    environment:
+      - DYNAMO_ENDPOINT=http://127.0.0.1:4569
+    build:
+      dockerfile: ./local/dynamodb-admin/Dockerfile
+    networks:
+      - local
+
+networks:
+  local:
+    name: local
